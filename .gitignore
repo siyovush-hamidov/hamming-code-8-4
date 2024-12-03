@@ -1,0 +1,54 @@
+# CMake build directory
+/build/
+
+# Linux
+*.out
+*.o
+*.a
+*.so
+*.lo
+*.la
+*.dSYM/
+
+# Windows
+*.exe
+*.dll
+*.lib
+*.pdb
+*.idb
+*.obj
+*.ilk
+*.exp
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# macOS
+*.dSYM/
+
+# C++ specific
+*.gch
+*.pch
+*.swp
+
+# Qt Creator
+*.pro.user
+*.qmake.stash
+
+# CodeBlocks
+*.cbp
+*.depend
+*.layout
+
+# VSCode
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Misc
+*.log
+*.bak
+*.tmp
