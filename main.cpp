@@ -13,7 +13,7 @@ int main()
 
     while (true)
     {
-        std::cout << "ENTER THE OPTION:\n0. ENTER A NUMBER TO WORK WITH\n1. ENCODE\n2. DECODE\n3. MAKE A MISTAKE\n4. EXIT\n";
+        std::cout << "ENTER THE OPTION:\n0. ENTER A DECIMAL NUMBER TO WORK WITH\n1. ENCODE\n2. DECODE\n3. MAKE A MISTAKE\n4. EXIT\n";
         std::cin >> choise;
 
         switch (choise)
