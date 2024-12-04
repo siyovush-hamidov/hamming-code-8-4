@@ -1,4 +1,4 @@
-#include "HammingCode.h"
+#include "../include/HammingCode.h"
 #include <iostream>
 #include <bitset>
 

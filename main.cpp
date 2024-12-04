@@ -1,12 +1,12 @@
 #include <iostream>
-#include "src/HammingCode.h"
+#include "include/HammingCode.h"
 #include <bitset>
 #include <memory>
 
 int main()
 {
     std::unique_ptr<HammingCode> hamming_code = std::make_unique<HammingCode>();
-    std::vector<uint8_t> bytes, encodedBytes, decodedBytes;
+    std::vector<uint8_t> bytes, encoded_bytes, decoded_bytes;
     int choise, block_of_encoded_byte = 1;
     unsigned long long number;
     bool number_is_entered = false, encoded = false;
@@ -33,11 +33,11 @@ int main()
             else
             {
                 bytes = hamming_code->divide_input_number_into_bytes(number);
-                encodedBytes = hamming_code->encode(bytes);
+                encoded_bytes = hamming_code->encode(bytes);
                 std::cout << "\nENCODED BYTES:\n";
                 for (size_t i = 0; i < bytes.size(); ++i)
                 {
-                    std::cout << block_of_encoded_byte++ << ". " << std::bitset<4>(bytes[i]) << " IS ENCODED TO " << std::bitset<8>(encodedBytes[i]) << std::endl;
+                    std::cout << block_of_encoded_byte++ << ". " << std::bitset<4>(bytes[i]) << " IS ENCODED TO " << std::bitset<8>(encoded_bytes[i]) << std::endl;
                 }
                 std::cout << std::endl;
                 block_of_encoded_byte = 0;
@@ -48,11 +48,11 @@ int main()
         case 2:
             if (encoded)
             {
-                decodedBytes = hamming_code->decode(encodedBytes);
-                if (decodedBytes.size() > 0)
+                decoded_bytes = hamming_code->decode(encoded_bytes);
+                if (decoded_bytes.size() > 0)
                 {
                     std::cout << "\nDECODED DATA IN BINARY SYSTEM: ";
-                    for (uint8_t byte : decodedBytes)
+                    for (uint8_t byte : decoded_bytes)
                         std::cout << std::bitset<4>(byte);
                     std::cout << std::endl;
                 }
@@ -68,11 +68,11 @@ int main()
         case 3:
             if (encoded)
             {
-                int itemNumber, byteNumber;
-                if (encodedBytes.size() > 1)
+                int item_number, byte_number;
+                if (encoded_bytes.size() > 1)
                 {
-                    std::cout << "ENTER THE NUMBER OF THE BYTE (MAX: " << encodedBytes.size() << "): ";
-                    std::cin >> itemNumber;
+                    std::cout << "ENTER THE NUMBER OF THE BYTE (MAX: " << encoded_bytes.size() << "): ";
+                    std::cin >> item_number;
                 }
                 else
                 {
@@ -80,22 +80,22 @@ int main()
                     break;
                 }
 
-                if (itemNumber < 1 || itemNumber > 8)
+                if (item_number < 1 || item_number > 8)
                 {
                     std::cout << "BYTE NUMBER MUST BE GREATER THAN 0 AND LESSER THAN 9!\n" << std::endl;
                     break;
                 }
 
                 std::cout << "ENTER THE NUMBER FOR THE BIT: ";
-                std::cin >> byteNumber;
-                if (byteNumber >= 1 && byteNumber <= 8)
+                std::cin >> byte_number;
+                if (byte_number >= 1 && byte_number <= 8)
                 {
-                    int itemIndex = itemNumber - 1;
-                    int bitPosition = byteNumber - 1;
+                    int itemIndex = item_number - 1;
+                    int bitPosition = byte_number - 1;
 
-                    encodedBytes[itemIndex] ^= (1 << bitPosition);
+                    encoded_bytes[itemIndex] ^= (1 << bitPosition);
 
-                    for (uint8_t byte : encodedBytes)
+                    for (uint8_t byte : encoded_bytes)
                         std::cout << ++block_of_encoded_byte << ". " << std::bitset<8>(byte) << std::endl;
 
                     std::cout << std::endl;
